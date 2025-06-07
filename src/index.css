@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Import react-toastify CSS */
 @import 'react-toastify/dist/ReactToastify.css';
+
+/* Import ReactQuill CSS */
+@import 'react-quill/dist/quill.snow.css';
 
 /* Ensure scrollbars are visible */
 body {

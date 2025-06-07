@@ -2,21 +2,23 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import ApperIcon from './ApperIcon';
+import EmailComposer from './EmailComposer';
 import candidateService from '../services/api/candidateService';
 import interviewService from '../services/api/interviewService';
+import emailService from '../services/api/emailService';
 import { format } from 'date-fns';
-
 const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
   const [activeTab, setActiveTab] = useState('profile');
   const [interviews, setInterviews] = useState([]);
+  const [emails, setEmails] = useState([]);
   const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
+  const [showEmailComposer, setShowEmailComposer] = useState(false);
+useEffect(() => {
     loadInterviews();
+    loadEmails();
   }, [candidate.id]);
-
-  const loadInterviews = async () => {
+const loadInterviews = async () => {
     try {
       const allInterviews = await interviewService.getAll();
       const candidateInterviews = allInterviews.filter(i => i.candidateId === candidate.id);
@@ -26,7 +28,15 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
     }
   };
 
-  const handleAddNote = async () => {
+  const loadEmails = async () => {
+    try {
+      const emailHistory = await emailService.getEmailHistory(candidate.id);
+      setEmails(emailHistory);
+    } catch (error) {
+      console.error('Failed to load email history:', error);
+    }
+  };
+const handleAddNote = async () => {
     if (!notes.trim()) return;
 
     setLoading(true);
@@ -51,14 +61,20 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
     }
   };
 
-  const tabs = [
+  const handleEmailSent = () => {
+    loadEmails();
+    onUpdate();
+  };
+const tabs = [
     { id: 'profile', label: 'Profile', icon: 'User' },
     { id: 'assessments', label: 'Assessments', icon: 'FileText' },
     { id: 'interviews', label: 'Interviews', icon: 'Calendar' },
+    { id: 'email', label: 'Email', icon: 'Mail' },
     { id: 'notes', label: 'Notes', icon: 'MessageSquare' }
-  ];
+];
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -73,7 +89,7 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
         onClick={(e) => e.stopPropagation()}
         className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
       >
-        {/* Header */}
+{/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center space-x-4">
             <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
@@ -85,12 +101,21 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
               <p className="text-sm text-gray-500">{candidate.position}</p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            <ApperIcon name="X" size={24} />
-          </button>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setShowEmailComposer(true)}
+              className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <ApperIcon name="Mail" size={16} />
+              <span>Send Email</span>
+            </button>
+            <button
+              onClick={onClose}
+              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <ApperIcon name="X" size={24} />
+            </button>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -268,6 +293,83 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
                   </div>
                 )}
               </motion.div>
+)}
+
+            {activeTab === 'email' && (
+              <motion.div
+                key="email"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="space-y-4"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-900">Email History</h3>
+                  <button
+                    onClick={() => setShowEmailComposer(true)}
+                    className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <ApperIcon name="Plus" size={16} />
+                    <span>Compose Email</span>
+                  </button>
+                </div>
+
+                {emails.length > 0 ? (
+                  <div className="space-y-3">
+                    {emails.map(email => (
+                      <div key={email.id} className="p-4 border border-gray-200 rounded-lg">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="font-medium text-gray-900">{email.subject}</span>
+                          </div>
+                          <span className="text-sm text-gray-500">
+                            {format(new Date(email.sentAt), 'MMM dd, yyyy h:mm a')}
+                          </span>
+                        </div>
+                        
+                        <div className="space-y-2 text-sm text-gray-600">
+                          <div className="flex items-center space-x-2">
+                            <ApperIcon name="Mail" size={14} />
+                            <span>To: {email.to}</span>
+                          </div>
+                          {email.cc && (
+                            <div className="flex items-center space-x-2">
+                              <ApperIcon name="Copy" size={14} />
+                              <span>CC: {email.cc}</span>
+                            </div>
+                          )}
+                          {email.attachments && email.attachments.length > 0 && (
+                            <div className="flex items-center space-x-2">
+                              <ApperIcon name="Paperclip" size={14} />
+                              <span>{email.attachments.length} attachment(s)</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="mt-3 p-3 bg-gray-50 rounded text-sm">
+                          <div 
+                            dangerouslySetInnerHTML={{ __html: email.content.length > 200 ? 
+                              email.content.substring(0, 200) + '...' : email.content 
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <ApperIcon name="Mail" className="w-12 h-12 text-gray-300 mx-auto mb-2" />
+                    <p className="text-gray-500">No emails sent yet</p>
+                    <button
+                      onClick={() => setShowEmailComposer(true)}
+                      className="mt-2 text-primary hover:underline"
+                    >
+                      Send your first email
+                    </button>
+                  </div>
+                )}
+              </motion.div>
             )}
 
             {activeTab === 'notes' && (
@@ -325,9 +427,21 @@ const CandidateDetailModal = ({ candidate, onClose, onUpdate }) => {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+</div>
       </motion.div>
     </motion.div>
+
+    {/* Email Composer Modal */}
+    <AnimatePresence>
+      {showEmailComposer && (
+        <EmailComposer
+          candidate={candidate}
+          onClose={() => setShowEmailComposer(false)}
+          onSent={handleEmailSent}
+        />
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 

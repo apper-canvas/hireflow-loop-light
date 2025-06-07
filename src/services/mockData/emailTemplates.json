@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Interview Invitation",
+    "category": "interview",
+    "subject": "Interview Invitation - {position} at HireFlow Pro",
+    "content": "<p>Dear {candidateName},</p><p>Thank you for your interest in the <strong>{position}</strong> position at HireFlow Pro. We were impressed with your application and would like to invite you for an interview.</p><p><strong>Interview Details:</strong></p><ul><li>Position: {position}</li><li>Date & Time: [Please specify]</li><li>Location: [Please specify]</li><li>Duration: Approximately 1 hour</li></ul><p>Please confirm your availability by replying to this email. If you have any questions or need to reschedule, please don't hesitate to contact us.</p><p>We look forward to meeting you!</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Application Received",
+    "category": "acknowledgment",
+    "subject": "Application Received - {position}",
+    "content": "<p>Dear {candidateName},</p><p>Thank you for applying for the <strong>{position}</strong> position at HireFlow Pro. We have successfully received your application and resume.</p><p>Our hiring team will review your application carefully. If your qualifications match our requirements, we will contact you within the next 1-2 weeks to discuss the next steps.</p><p>In the meantime, feel free to explore our company culture and values on our website.</p><p>Thank you for your interest in joining our team!</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Job Offer",
+    "category": "offer",
+    "subject": "Job Offer - {position} at HireFlow Pro",
+    "content": "<p>Dear {candidateName},</p><p>Congratulations! We are delighted to extend an offer for the <strong>{position}</strong> position at HireFlow Pro.</p><p>After careful consideration of your qualifications and our interview process, we believe you would be an excellent addition to our team.</p><p><strong>Offer Details:</strong></p><ul><li>Position: {position}</li><li>Start Date: [Please specify]</li><li>Salary: [Please specify]</li><li>Benefits: [Please specify]</li></ul><p>Please review the attached offer letter for complete details. We would appreciate your response within 5 business days.</p><p>If you have any questions about the offer or would like to discuss any aspects, please don't hesitate to contact us.</p><p>We look forward to welcoming you to the HireFlow Pro family!</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Application Rejection",
+    "category": "rejection",
+    "subject": "Update on Your Application - {position}",
+    "content": "<p>Dear {candidateName},</p><p>Thank you for your interest in the <strong>{position}</strong> position at HireFlow Pro and for taking the time to apply.</p><p>After careful consideration, we have decided to move forward with other candidates whose experience more closely aligns with our current needs for this role.</p><p>We were impressed with your qualifications and encourage you to apply for future opportunities that may be a better fit. We will keep your resume on file for consideration.</p><p>We appreciate the time and effort you invested in the application process and wish you success in your job search.</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Follow-up Email",
+    "category": "follow-up",
+    "subject": "Following up on your application - {position}",
+    "content": "<p>Dear {candidateName},</p><p>I hope this email finds you well. I wanted to follow up on your application for the <strong>{position}</strong> position at HireFlow Pro.</p><p>We are currently in the process of reviewing applications and wanted to keep you updated on our timeline. We expect to complete our initial review by [date] and will contact shortlisted candidates for interviews shortly after.</p><p>If you have any questions about the position or our process, please feel free to reach out. We appreciate your patience and continued interest in joining our team.</p><p>Thank you for your time and consideration.</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Assessment Invitation",
+    "category": "assessment",
+    "subject": "Online Assessment - {position} Position",
+    "content": "<p>Dear {candidateName},</p><p>Thank you for your continued interest in the <strong>{position}</strong> position at HireFlow Pro.</p><p>As the next step in our hiring process, we would like to invite you to complete an online assessment. This assessment will help us better understand your skills and how they align with the requirements of the role.</p><p><strong>Assessment Details:</strong></p><ul><li>Duration: Approximately 45-60 minutes</li><li>Deadline: [Please specify]</li><li>Access Link: [Assessment link will be provided]</li></ul><p>Please complete the assessment by the deadline mentioned above. If you encounter any technical issues or need to reschedule, please contact us immediately.</p><p>Thank you for your cooperation, and we look forward to reviewing your results.</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Interview Reminder",
+    "category": "reminder",
+    "subject": "Interview Reminder - {position} Tomorrow",
+    "content": "<p>Dear {candidateName},</p><p>This is a friendly reminder about your upcoming interview for the <strong>{position}</strong> position at HireFlow Pro.</p><p><strong>Interview Details:</strong></p><ul><li>Date: [Tomorrow's date]</li><li>Time: [Interview time]</li><li>Location: [Interview location/video link]</li><li>Interviewer(s): [Names]</li><li>Expected Duration: 1 hour</li></ul><p><strong>What to Bring:</strong></p><ul><li>A copy of your resume</li><li>Portfolio or work samples (if applicable)</li><li>List of references</li><li>Any questions you have about the role or company</li></ul><p>If you need to reschedule or have any questions, please contact us as soon as possible.</p><p>We look forward to meeting you tomorrow!</p><p>Best regards,<br>The HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "8",
+    "name": "Reference Check Request",
+    "category": "reference",
+    "subject": "Reference Check - {candidateName} for {position}",
+    "content": "<p>Dear [Reference Name],</p><p>I hope this email finds you well. <strong>{candidateName}</strong> has applied for the <strong>{position}</strong> position at HireFlow Pro and has listed you as a professional reference.</p><p>We would greatly appreciate a few minutes of your time to discuss {candidateName}'s work performance, character, and suitability for this role.</p><p><strong>The position involves:</strong></p><ul><li>[Key responsibilities]</li><li>[Required skills]</li><li>[Team environment details]</li></ul><p>Would you be available for a brief phone conversation this week? Alternatively, you can provide feedback via email if that works better for your schedule.</p><p>Please let me know your availability, and thank you in advance for your time and insights.</p><p>Best regards,<br>[Your Name]<br>HireFlow Pro Team</p>",
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  }
+]

@@ -17,7 +17,7 @@ const candidateService = {
     return { ...candidate };
   },
 
-  async create(candidateData) {
+async create(candidateData) {
     await delay(400);
     const newCandidate = {
       ...candidateData,
@@ -26,7 +26,9 @@ const candidateService = {
       stage: 'Applied',
       assessmentScores: [],
       interviews: [],
-      notes: []
+      notes: [],
+      emails: [],
+      lastActivity: new Date().toISOString()
     };
     candidates.push(newCandidate);
     return { ...newCandidate };
