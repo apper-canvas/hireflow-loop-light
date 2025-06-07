@@ -1,4 +1,4 @@
-import HomePage from '@/components/pages/HomePage';
+import HomePage from '../components/pages/HomePage';
 import Pipeline from '../pages/Pipeline';
 import Assessments from '../pages/Assessments';
 import Interviews from '../pages/Interviews';
@@ -58,5 +58,7 @@ const routes = {
   }
 };
 
+// Export the routes object that App.jsx imports
+export { routes };
 export const routeArray = Object.values(routes);
 export const navRoutes = [routes.pipeline, routes.assessments, routes.interviews, routes.reports, routes.settings];
