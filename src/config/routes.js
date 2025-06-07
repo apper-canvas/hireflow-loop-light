@@ -1,4 +1,4 @@
-import Home from '../pages/Home';
+import HomePage from '@/components/pages/HomePage';
 import Pipeline from '../pages/Pipeline';
 import Assessments from '../pages/Assessments';
 import Interviews from '../pages/Interviews';
@@ -6,13 +6,14 @@ import Reports from '../pages/Reports';
 import Settings from '../pages/Settings';
 import NotFound from '../pages/NotFound';
 
-export const routes = {
-  home: {
-    id: 'home',
-    label: 'Home',
-    path: '/home',
-    icon: 'Home',
-    component: Home
+const routes = {
+  dashboard: {
+    id: 'dashboard',
+    path: '/',
+    component: HomePage,
+    name: 'Dashboard',
+    icon: 'LayoutDashboard',
+    layout: true
   },
   pipeline: {
     id: 'pipeline',

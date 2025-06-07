@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
-import ApperIcon from '../components/ApperIcon';
-import CandidateDetailModal from '../components/CandidateDetailModal';
-import candidateService from '../services/api/candidateService';
 import { format } from 'date-fns';
+import ApperIcon from '../components/ApperIcon';
+import CandidateDetailModal from '@/components/organisms/CandidateDetailModal';
+import candidateService from '@/services/candidateService';
 
 const Pipeline = () => {
   const [candidates, setCandidates] = useState([]);
