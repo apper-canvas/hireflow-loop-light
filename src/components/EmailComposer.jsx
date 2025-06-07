@@ -19,6 +19,7 @@ const EmailComposer = ({ candidate, onClose, onSent }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [attachments, setAttachments] = useState([]);
   const fileInputRef = useRef(null);
+  const quillRef = useRef(null);
 
   useEffect(() => {
     loadTemplates();
@@ -239,18 +240,20 @@ const EmailComposer = ({ candidate, onClose, onSent }) => {
                 />
               </div>
 
-              {/* Content */}
+{/* Content */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Message *
                 </label>
                 <div className="border border-gray-300 rounded-lg overflow-hidden">
                   <ReactQuill
+                    ref={quillRef}
                     value={formData.content}
                     onChange={handleContentChange}
                     modules={quillModules}
                     placeholder="Write your email content here..."
                     style={{ minHeight: '200px' }}
+                    theme="snow"
                   />
                 </div>
               </div>
