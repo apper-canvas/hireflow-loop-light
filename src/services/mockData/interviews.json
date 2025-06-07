@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "candidateId": "1",
+    "interviewers": ["Alex Rodriguez", "Jennifer Liu"],
+    "scheduledTime": "2024-01-25T14:00:00Z",
+    "duration": 60,
+    "type": "Technical",
+    "location": "Conference Room A",
+    "notes": "Focus on React components and state management. Technical coding challenge included."
+  },
+  {
+    "id": "2",
+    "candidateId": "2",
+    "interviewers": ["Michael Chen"],
+    "scheduledTime": "2024-01-26T10:30:00Z",
+    "duration": 45,
+    "type": "Phone",
+    "location": "+1-555-HIRE-NOW",
+    "notes": "Initial screening call to discuss experience and cultural fit."
+  },
+  {
+    "id": "3",
+    "candidateId": "4",
+    "interviewers": ["Sarah Williams", "Dr. Robert Kim", "Lisa Chen"],
+    "scheduledTime": "2024-01-22T15:00:00Z",
+    "duration": 90,
+    "type": "Panel",
+    "location": "Executive Conference Room",
+    "notes": "Final round interview with leadership team. Presentation on AI research approach required."
+  },
+  {
+    "id": "4",
+    "candidateId": "3",
+    "interviewers": ["Design Team"],
+    "scheduledTime": "2024-01-28T11:00:00Z",
+    "duration": 75,
+    "type": "Portfolio Review",
+    "location": "Design Studio",
+    "notes": "Portfolio presentation and design challenge. Focus on user research methodology."
+  },
+  {
+    "id": "5",
+    "candidateId": "1",
+    "interviewers": ["Team Lead"],
+    "scheduledTime": "2024-01-29T16:00:00Z",
+    "duration": 30,
+    "type": "Cultural Fit",
+    "location": "https://zoom.us/j/meeting123",
+    "notes": "Final culture and team fit assessment via video call."
+  }
+]

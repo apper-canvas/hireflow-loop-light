@@ -1,0 +1,101 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Chen",
+    "email": "sarah.chen@email.com",
+    "phone": "+1-555-0123",
+    "position": "Frontend Developer",
+    "stage": "Interview",
+    "resumeUrl": "/resumes/sarah-chen.pdf",
+    "appliedDate": "2024-01-15T10:30:00Z",
+    "assessmentScores": [85, 78, 92],
+    "interviews": [],
+    "notes": [
+      {
+        "id": "note1",
+        "content": "Strong technical background in React and TypeScript. Excellent communication skills during phone screening.",
+        "timestamp": "2024-01-16T14:20:00Z",
+        "author": "Alex Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Marcus Thompson",
+    "email": "marcus.thompson@email.com",
+    "phone": "+1-555-0124",
+    "position": "Backend Developer",
+    "stage": "Screening",
+    "resumeUrl": "/resumes/marcus-thompson.pdf",
+    "appliedDate": "2024-01-18T09:15:00Z",
+    "assessmentScores": [88, 91],
+    "interviews": [],
+    "notes": [
+      {
+        "id": "note2",
+        "content": "5 years experience with Node.js and Python. Previously worked at two startups with strong growth phases.",
+        "timestamp": "2024-01-19T11:45:00Z",
+        "author": "Jennifer Liu"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Emily Rodriguez",
+    "email": "emily.rodriguez@email.com",
+    "phone": "+1-555-0125",
+    "position": "UX Designer",
+    "stage": "Applied",
+    "resumeUrl": "/resumes/emily-rodriguez.pdf",
+    "appliedDate": "2024-01-20T16:45:00Z",
+    "assessmentScores": [],
+    "interviews": [],
+    "notes": []
+  },
+  {
+    "id": "4",
+    "name": "David Kim",
+    "email": "david.kim@email.com",
+    "phone": "+1-555-0126",
+    "position": "Data Scientist",
+    "stage": "Offer",
+    "resumeUrl": "/resumes/david-kim.pdf",
+    "appliedDate": "2024-01-10T13:20:00Z",
+    "assessmentScores": [95, 89, 94],
+    "interviews": [],
+    "notes": [
+      {
+        "id": "note3",
+        "content": "PhD in Machine Learning from Stanford. Impressed the entire interview panel with deep knowledge and practical experience.",
+        "timestamp": "2024-01-22T15:30:00Z",
+        "author": "Michael Chen"
+      },
+      {
+        "id": "note4",
+        "content": "Salary negotiation in progress. Very interested in our AI research initiatives.",
+        "timestamp": "2024-01-23T10:15:00Z",
+        "author": "HR Team"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Jessica Park",
+    "email": "jessica.park@email.com",
+    "phone": "+1-555-0127",
+    "position": "Product Manager",
+    "stage": "Hired",
+    "resumeUrl": "/resumes/jessica-park.pdf",
+    "appliedDate": "2024-01-05T11:00:00Z",
+    "assessmentScores": [82, 88, 90],
+    "interviews": [],
+    "notes": [
+      {
+        "id": "note5",
+        "content": "Started on Jan 24th. Great addition to the product team with solid experience from Google and Spotify.",
+        "timestamp": "2024-01-24T09:00:00Z",
+        "author": "Sarah Williams"
+      }
+    ]
+  }
+]

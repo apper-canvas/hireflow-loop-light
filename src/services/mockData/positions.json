@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "title": "Frontend Developer",
+    "department": "Engineering",
+    "status": "open",
+    "assessmentId": "1"
+  },
+  {
+    "id": "2",
+    "title": "Backend Developer",
+    "department": "Engineering",
+    "status": "open",
+    "assessmentId": "2"
+  },
+  {
+    "id": "3",
+    "title": "UX Designer",
+    "department": "Design",
+    "status": "open",
+    "assessmentId": "3"
+  },
+  {
+    "id": "4",
+    "title": "Data Scientist",
+    "department": "Data & Analytics",
+    "status": "open",
+    "assessmentId": "4"
+  },
+  {
+    "id": "5",
+    "title": "Product Manager",
+    "department": "Product",
+    "status": "filled",
+    "assessmentId": null
+  }
+]

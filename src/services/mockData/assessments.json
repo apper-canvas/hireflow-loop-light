@@ -1,0 +1,126 @@
+[
+  {
+    "id": "1",
+    "title": "Frontend Developer Technical Assessment",
+    "position": "Frontend Developer",
+    "timeLimit": 45,
+    "passingScore": 75,
+    "questions": [
+      {
+        "id": "q1",
+        "type": "multiple-choice",
+        "question": "Which hook is used to manage state in React functional components?",
+        "options": ["useEffect", "useState", "useContext", "useReducer"],
+        "correctAnswer": 1,
+        "points": 10
+      },
+      {
+        "id": "q2",
+        "type": "coding",
+        "question": "Write a JavaScript function that takes an array of numbers and returns the sum of all even numbers.",
+        "correctAnswer": "function sumEvenNumbers(arr) {\n  return arr.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);\n}",
+        "points": 20
+      },
+      {
+        "id": "q3",
+        "type": "text",
+        "question": "Explain the difference between props and state in React.",
+        "correctAnswer": "Props are read-only data passed from parent to child components, while state is mutable data managed within a component that can trigger re-renders when changed.",
+        "points": 15
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Backend Developer Assessment",
+    "position": "Backend Developer",
+    "timeLimit": 60,
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Which HTTP status code indicates a successful POST request that created a new resource?",
+        "options": ["200", "201", "204", "301"],
+        "correctAnswer": 1,
+        "points": 10
+      },
+      {
+        "id": "q5",
+        "type": "coding",
+        "question": "Write a SQL query to find all users who have made more than 5 orders in the last 30 days.",
+        "correctAnswer": "SELECT u.* FROM users u\nJOIN orders o ON u.id = o.user_id\nWHERE o.created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)\nGROUP BY u.id\nHAVING COUNT(o.id) > 5;",
+        "points": 25
+      },
+      {
+        "id": "q6",
+        "type": "text",
+        "question": "Describe the differences between REST and GraphQL APIs.",
+        "correctAnswer": "REST uses multiple endpoints with fixed data structures, while GraphQL uses a single endpoint where clients can request exactly the data they need. GraphQL provides better flexibility and reduces over-fetching, but REST is simpler and more cacheable.",
+        "points": 20
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "UX Designer Portfolio Review",
+    "position": "UX Designer",
+    "timeLimit": 30,
+    "passingScore": 80,
+    "questions": [
+      {
+        "id": "q7",
+        "type": "text",
+        "question": "Describe your design process from user research to final prototype.",
+        "correctAnswer": "Discovery & Research → User Personas & Journey Mapping → Information Architecture → Wireframing → Visual Design → Prototyping → User Testing → Iteration",
+        "points": 25
+      },
+      {
+        "id": "q8",
+        "type": "multiple-choice",
+        "question": "What is the primary goal of user experience design?",
+        "options": ["Make interfaces look beautiful", "Create usable and meaningful experiences", "Follow design trends", "Increase page views"],
+        "correctAnswer": 1,
+        "points": 15
+      },
+      {
+        "id": "q9",
+        "type": "text",
+        "question": "How do you measure the success of a UX design?",
+        "correctAnswer": "User satisfaction metrics, task completion rates, error rates, time on task, conversion rates, user feedback, and achievement of business goals.",
+        "points": 20
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Data Science Technical Evaluation",
+    "position": "Data Scientist",
+    "timeLimit": 90,
+    "passingScore": 75,
+    "questions": [
+      {
+        "id": "q10",
+        "type": "multiple-choice",
+        "question": "Which algorithm is best suited for binary classification problems?",
+        "options": ["K-means clustering", "Linear regression", "Logistic regression", "ARIMA"],
+        "correctAnswer": 2,
+        "points": 10
+      },
+      {
+        "id": "q11",
+        "type": "coding",
+        "question": "Write Python code to calculate the correlation coefficient between two datasets.",
+        "correctAnswer": "import numpy as np\n\ndef correlation_coefficient(x, y):\n    return np.corrcoef(x, y)[0, 1]\n\n# Or using pandas:\n# import pandas as pd\n# df.corr()",
+        "points": 20
+      },
+      {
+        "id": "q12",
+        "type": "text",
+        "question": "Explain the difference between supervised and unsupervised learning.",
+        "correctAnswer": "Supervised learning uses labeled training data to learn patterns and make predictions, while unsupervised learning finds hidden patterns in unlabeled data without predefined outcomes.",
+        "points": 15
+      }
+    ]
+  }
+]
