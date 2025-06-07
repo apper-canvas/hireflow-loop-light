@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { format } from 'date-fns';
 import ApperIcon from '../components/ApperIcon';
 import CandidateDetailModal from '../components/CandidateDetailModal';
+import FilterBar from '../components/FilterBar';
 import candidateService from '../services/api/candidateService';
 
 const Pipeline = () => {
-  const [candidates, setCandidates] = useState([]);
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterLoading, setFilterLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [draggedCandidate, setDraggedCandidate] = useState(null);
@@ -26,12 +29,13 @@ const Pipeline = () => {
     loadCandidates();
   }, []);
 
-  const loadCandidates = async () => {
+const loadCandidates = async () => {
     setLoading(true);
     setError(null);
     try {
       const data = await candidateService.getAll();
-      setCandidates(data);
+      setAllCandidates(data);
+      setFilteredCandidates(data);
     } catch (err) {
       setError(err.message || 'Failed to load candidates');
       toast.error('Failed to load candidates');
@@ -40,8 +44,17 @@ const Pipeline = () => {
     }
   };
 
+  const handleFilterChange = useCallback((filtered) => {
+    setFilterLoading(true);
+    // Simulate small delay for better UX
+    setTimeout(() => {
+      setFilteredCandidates(filtered);
+      setFilterLoading(false);
+    }, 100);
+  }, []);
+
   const getCandidatesByStage = (stage) => {
-    return candidates.filter(candidate => candidate.stage === stage);
+    return filteredCandidates.filter(candidate => candidate.stage === stage);
   };
 
   const handleDragStart = (candidate) => {
@@ -64,8 +77,10 @@ const Pipeline = () => {
         ...draggedCandidate,
         stage: newStage
       });
-      
-      setCandidates(prev => 
+setAllCandidates(prev => 
+        prev.map(c => c.id === updatedCandidate.id ? updatedCandidate : c)
+      );
+      setFilteredCandidates(prev => 
         prev.map(c => c.id === updatedCandidate.id ? updatedCandidate : c)
       );
       
@@ -122,9 +137,9 @@ const Pipeline = () => {
         </div>
       </div>
     );
-  }
+}
 
-  if (candidates.length === 0) {
+  if (allCandidates.length === 0) {
     return (
       <div className="p-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Candidate Pipeline</h1>
@@ -149,14 +164,43 @@ const Pipeline = () => {
     );
   }
 
-  return (
+return (
     <div className="p-6 h-full overflow-hidden flex flex-col">
       <div className="flex-shrink-0 mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Candidate Pipeline</h1>
         <p className="text-gray-600">Drag candidates between stages to update their status</p>
       </div>
       
-      <div className="flex-1 overflow-x-auto">
+      <div className="flex-shrink-0 mb-6">
+        <FilterBar 
+          candidates={allCandidates}
+          onFilterChange={handleFilterChange}
+        />
+      </div>
+
+      {filteredCandidates.length === 0 && allCandidates.length > 0 ? (
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center py-12">
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              <ApperIcon name="Search" className="w-16 h-16 text-gray-300 mx-auto" />
+            </motion.div>
+            <h3 className="mt-4 text-lg font-medium text-gray-900">No candidates match your filters</h3>
+            <p className="mt-2 text-gray-500">Try adjusting your filter criteria to see more results</p>
+          </div>
+        </div>
+      ) : (
+        <div className="flex-1 overflow-x-auto">
+          {filterLoading && (
+            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-primary rounded-full animate-pulse"></div>
+                <span className="text-gray-600">Filtering...</span>
+              </div>
+            </div>
+          )}
         <div className="flex space-x-6 min-w-max pb-4">
           {getStageWithCounts().map((stage) => (
             <motion.div
@@ -229,9 +273,9 @@ const Pipeline = () => {
               </div>
             </motion.div>
           ))}
+</div>
         </div>
-      </div>
-
+      )}
       <AnimatePresence>
         {selectedCandidate && (
           <CandidateDetailModal
